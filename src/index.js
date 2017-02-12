@@ -1,0 +1,25 @@
+module.exports = function (input) {
+  if (typeof input !== 'string') {
+    throw new Error('Expected input to be string')
+  }
+
+  const ast = require('babylon').parse(input, {plugins: ['*']})
+  const comments = ast.tokens.filter(token => token.type === 'CommentBlock')
+
+  const re = /^\s*@([\w_-]+)(?:[\s\n])([\s\S]+)$/
+  const codes = {}
+  for (const comment of comments) {
+    if (re.test(comment.value)) {
+      const [, namespace, content] = re.exec(comment.value)
+      const execute = new Function(`return ${content}`) // eslint-disable-line no-new-func
+      if (codes[namespace]) {
+        throw new Error(`Duplicated namespace: ${namespace}`)
+      } else {
+        codes[namespace] = execute()
+      }
+    }
+  }
+
+  return codes
+}
+
