@@ -11,10 +11,10 @@ module.exports = function (input) {
   for (const comment of comments) {
     if (re.test(comment.value)) {
       const [, namespace, content] = re.exec(comment.value)
-      const execute = new Function(`return ${content}`) // eslint-disable-line no-new-func
       if (codes[namespace]) {
         throw new Error(`Duplicated namespace: ${namespace}`)
       } else {
+        const execute = new Function(`return ${content}`) // eslint-disable-line no-new-func
         codes[namespace] = execute()
       }
     }
