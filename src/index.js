@@ -4,7 +4,7 @@ module.exports = function (input) {
   }
 
   const ast = require('babylon').parse(input, {sourceType: 'module', plugins: ['*']})
-  const comments = ast.tokens.filter(token => token.type === 'CommentBlock')
+  const comments = ast.tokens.filter(token => ['CommentBlock', 'CommentLine'].indexOf(token.type) > -1)
 
   const re = /^\s*@([\w_-]+)(?:[\s\n])([\s\S]+)$/
   const codes = {}
