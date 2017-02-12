@@ -3,7 +3,7 @@ module.exports = function (input) {
     throw new Error('Expected input to be string')
   }
 
-  const ast = require('babylon').parse(input, {plugins: ['*']})
+  const ast = require('babylon').parse(input, {sourceType: 'module', plugins: ['*']})
   const comments = ast.tokens.filter(token => token.type === 'CommentBlock')
 
   const re = /^\s*@([\w_-]+)(?:[\s\n])([\s\S]+)$/
