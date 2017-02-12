@@ -44,6 +44,24 @@ function bar() {}
 
 Both multi-line `/* ... */` and single-line `// ...` comments are supported.
 
+## API
+
+### pragma(input, [options])
+
+#### input
+
+Type: `string`<br>
+Required: `true`
+
+#### options
+
+#### parseContent
+
+Type: `function`<br>
+Default: `source => new Function(\`return ${source}\`)()`
+
+The function to process source content, for example: `//@server {port: 1}`, the source content is `{port: 1}` and it will be evaluated.
+
 ## Contributing
 
 1. Fork it!

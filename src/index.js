@@ -1,4 +1,6 @@
-module.exports = function (input) {
+module.exports = function (input, {
+  parseContent = source => new Function(`return ${source}`)() // eslint-disable-line no-new-func
+} = {}) {
   if (typeof input !== 'string') {
     throw new Error('Expected input to be string')
   }
@@ -14,12 +16,10 @@ module.exports = function (input) {
       if (codes[namespace]) {
         throw new Error(`Duplicated namespace: ${namespace}`)
       } else {
-        const execute = new Function(`return ${content}`) // eslint-disable-line no-new-func
-        codes[namespace] = execute()
+        codes[namespace] = parseContent(content)
       }
     }
   }
 
   return codes
 }
-
