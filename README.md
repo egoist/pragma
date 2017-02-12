@@ -58,7 +58,7 @@ Required: `true`
 #### parseContent
 
 Type: `function`<br>
-Default: `source => new Function(\`return ${source}\`)()`
+Default: <code>source => new Function(&#x60;return ${source}&#x60;)()</code>
 
 The function to process source content, for example: `//@server {port: 1}`, the source content is `{port: 1}` and it will be evaluated.
 
