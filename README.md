@@ -42,6 +42,8 @@ function bar() {}
 }
 ```
 
+Both multi-line `/* ... */` and single-line `// ...` comments are supported.
+
 ## Contributing
 
 1. Fork it!
