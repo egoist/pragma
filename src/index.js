@@ -1,4 +1,4 @@
-module.exports = function (input, {
+export default function (input, {
   parseContent = source => new Function(`return ${source}`)() // eslint-disable-line no-new-func
 } = {}) {
   if (typeof input !== 'string') {
