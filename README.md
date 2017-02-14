@@ -55,7 +55,7 @@ Required: `true`
 
 #### options
 
-#### parseContent
+##### parseContent
 
 Type: `function`<br>
 Default: <code>source => new Function(&#x60;return ${source}&#x60;)()</code>
