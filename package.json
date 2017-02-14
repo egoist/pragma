@@ -1,6 +1,6 @@
 {
   "name": "pragma",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Parse pragma and its content from JavaScript comments",
   "repository": {
     "url": "egoist/pragma",
